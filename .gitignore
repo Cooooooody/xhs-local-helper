@@ -1,0 +1,10 @@
+.DS_Store
+.idea/
+.tools/
+openspec/
+bin/
+/dist
+logs/
+run/
+tmp/
+xhs-local-helper-windows-tray.exe
