@@ -226,6 +226,24 @@ TARGET_ARCH=arm64 ./scripts/package-app.sh
 TARGET_ARCH=amd64 ./scripts/package-app.sh
 ```
 
+如果要做正式签名与 notarization：
+
+```bash
+DEVELOPER_IDENTITY="Developer ID Application: Haotian Liy (N3GRK98G43)" \
+NOTARY_PROFILE="xhs-local-helper-notary" \
+ENABLE_NOTARIZATION=1 \
+TARGET_ARCH=arm64 \
+./scripts/package-app.sh
+```
+
+```bash
+DEVELOPER_IDENTITY="Developer ID Application: Haotian Liy (N3GRK98G43)" \
+NOTARY_PROFILE="xhs-local-helper-notary" \
+ENABLE_NOTARIZATION=1 \
+TARGET_ARCH=amd64 \
+./scripts/package-app.sh
+```
+
 脚本依赖：
 
 - 已编译的 `dist/xhs-local-helper-darwin-arm64`
@@ -245,6 +263,14 @@ TARGET_ARCH=amd64 ./scripts/package-app.sh
 ```bash
 ./scripts/verify-app-bundle.sh "dist/XHS Local Helper.app" arm64
 ./scripts/verify-app-bundle.sh "dist/XHS Local Helper Intel.app" amd64
+```
+
+如果要验证正式签名与 notarization：
+
+```bash
+EXPECTED_IDENTITY="Developer ID Application: Haotian Liy (N3GRK98G43)" \
+EXPECT_NOTARIZED=1 \
+./scripts/verify-app-bundle.sh "dist/XHS Local Helper.app" arm64
 ```
 
 ## 已知限制

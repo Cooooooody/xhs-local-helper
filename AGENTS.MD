@@ -8,6 +8,9 @@ Packaging notes:
 - Build Intel helper binary: `dist/xhs-local-helper-darwin-amd64`
 - Package `.app`: `scripts/package-app.sh`
 - Verify `.app` structure: `scripts/verify-app-bundle.sh`
+- macOS formal signing identity env: `DEVELOPER_IDENTITY`
+- macOS notarization profile env: `NOTARY_PROFILE`
+- macOS notarization switch: `ENABLE_NOTARIZATION=1`
 - Generated app bundle: `dist/XHS Local Helper.app`
 - Generated distributable zip: `dist/xhs-local-helper-app.zip`
 - Generated Intel app bundle: `dist/XHS Local Helper Intel.app`
@@ -26,6 +29,8 @@ Current delivery requirements:
 
 - macOS Apple Silicon packaging: `TARGET_ARCH=arm64 ./scripts/package-app.sh`
 - macOS Intel packaging: `TARGET_ARCH=amd64 ./scripts/package-app.sh`
+- macOS formal Apple Silicon packaging: `DEVELOPER_IDENTITY="Developer ID Application: Haotian Liy (N3GRK98G43)" NOTARY_PROFILE="xhs-local-helper-notary" ENABLE_NOTARIZATION=1 TARGET_ARCH=arm64 ./scripts/package-app.sh`
+- macOS formal Intel packaging: `DEVELOPER_IDENTITY="Developer ID Application: Haotian Liy (N3GRK98G43)" NOTARY_PROFILE="xhs-local-helper-notary" ENABLE_NOTARIZATION=1 TARGET_ARCH=amd64 ./scripts/package-app.sh`
 - Apple Silicon archive source: `~/Downloads/xiaohongshu-mcp-darwin-arm64.tar.gz`
 - Intel archive source: `~/Downloads/xiaohongshu-mcp-darwin-amd64.tar.gz`
 - The generated `.app` contains both the helper binary and the upstream `xiaohongshu-mcp` archive
